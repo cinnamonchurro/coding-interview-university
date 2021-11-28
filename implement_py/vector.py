@@ -71,7 +71,7 @@ class vector :
 				self.capacity = temp_capacity
 			return(target)
 		else:
-			raise IndexError("There is nothing to pop!")
+			raise IndexError("There is nothing to remove!")
 
 
 	def delete(self, idx):
@@ -92,11 +92,30 @@ class vector :
 				self.capacity = temp_capacity
 
 	def remove(self, item):
-		- looks for value and removes index holding it (even if in multiple places)
+        swap = []
+        rem_rec = []
+		for i in range(self.size()) :
+            if self.array[i] != item:
+                swap.append(self.array[i])
+            
+            else :
+                rem_rec.append(i)
+        
+        self.array = swap
+        del swap
+        if len(rem_rec) > 0:
+            print(f"{item} removed at indices {indices}")
+        else :
+            print(f"{item} was not present in the array")
+        
 
 	def find(self, item):
-		- looks for value and returns first index with that value, -1 if not found
+        for idx, val in enumerate(array) :
+            if item == val:
+                return(idx)
+		return(-1)
 
 	def resize(self, new_capacity) : // private function
+
             - when you reach capacity, resize to double the size
             - when popping an item, if size is 1/4 of capacity, resize to half
